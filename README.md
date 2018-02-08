@@ -3,6 +3,22 @@
 
 > Irasync is still evaluating and testing different stacks! Check out the different branches of this repo to try out the experiments.
 
+## Build Setup
+
+``` bash
+# install dependencies with npm:
+npm install
+
+# serve with hot reload at localhost:8080
+npm start
+
+# show the docs at localhost:8080
+npm run docs:open
+
+# update the docs
+npm run docs:update
+```
+
 ## License
 
 Irasync Backend Reference Implementation

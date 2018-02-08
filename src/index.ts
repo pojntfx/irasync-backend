@@ -1,2 +1,7 @@
-// Echo "Hello, world!"
-console.log('Hello, world!')
+class IrasyncBackend {
+  constructor() {
+    console.log('Hello, world!');
+  }
+}
+
+let irasyncBackend = new IrasyncBackend();
