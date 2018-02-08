@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IrasyncBackend | Irasync Backend</title>
+	<title>Resolvers | Irasync Backend</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_main_.html">&quot;main&quot;</a>
+					<a href="../modules/_data_resolvers_.html">&quot;data/resolvers&quot;</a>
 				</li>
 				<li>
-					<a href="_main_.irasyncbackend.html">IrasyncBackend</a>
+					<a href="_data_resolvers_.resolvers.html">Resolvers</a>
 				</li>
 			</ul>
-			<h1>Class IrasyncBackend</h1>
+			<h1>Class Resolvers</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Root of a new Irasync instance</p>
+						<p>Calls to the methods that will return the data</p>
 					</div>
 				</div>
 			</section>
@@ -80,7 +80,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IrasyncBackend</span>
+						<span class="target">Resolvers</span>
 					</li>
 				</ul>
 			</section>
@@ -91,23 +91,21 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_main_.irasyncbackend.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_data_resolvers_.resolvers.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_main_.irasyncbackend.html#express_port" class="tsd-kind-icon">EXPRESS_<wbr>PORT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_main_.irasyncbackend.html#app" class="tsd-kind-icon">app</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_main_.irasyncbackend.html#schema" class="tsd-kind-icon">schema</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_data_resolvers_.resolvers.html#postsdata" class="tsd-kind-icon">posts<wbr>Data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_data_resolvers_.resolvers.html#resolvers" class="tsd-kind-icon">resolvers</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_main_.irasyncbackend.html#config" class="tsd-kind-icon">config</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_main_.irasyncbackend.html#listen" class="tsd-kind-icon">listen</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_main_.irasyncbackend.html#setupendpoints" class="tsd-kind-icon">setup<wbr>Endpoints</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_data_resolvers_.resolvers.html#createposts" class="tsd-kind-icon">create<wbr>Posts</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_data_resolvers_.resolvers.html#createresolvers" class="tsd-kind-icon">create<wbr>Resolvers</a></li>
 							</ul>
 						</section>
 					</div>
@@ -119,144 +117,85 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Irasync<wbr>Backend<span class="tsd-signature-symbol">(</span>Params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_main_.params.html" class="tsd-signature-type">Params</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_main_.irasyncbackend.html" class="tsd-signature-type">IrasyncBackend</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Resolvers<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_data_resolvers_.resolvers.html" class="tsd-signature-type">Resolvers</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/main.ts#L55">main.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/data/resolvers.ts#L19">data/resolvers.ts:19</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>Params: <a href="../interfaces/_main_.params.html" class="tsd-signature-type">Params</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_main_.irasyncbackend.html" class="tsd-signature-type">IrasyncBackend</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_data_resolvers_.resolvers.html" class="tsd-signature-type">Resolvers</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="express_port" class="tsd-anchor"></a>
-					<h3>EXPRESS_<wbr>PORT</h3>
-					<div class="tsd-signature tsd-kind-icon">EXPRESS_<wbr>PORT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="postsdata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> posts<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">posts<wbr>Data<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_data_resolvers_.ipost.html" class="tsd-signature-type">IPost</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/main.ts#L54">main.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/data/resolvers.ts#L18">data/resolvers.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="app" class="tsd-anchor"></a>
-					<h3>app</h3>
-					<div class="tsd-signature tsd-kind-icon">app<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="resolvers" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> resolvers</h3>
+					<div class="tsd-signature tsd-kind-icon">resolvers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/main.ts#L53">main.ts:53</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="schema" class="tsd-anchor"></a>
-					<h3>schema</h3>
-					<div class="tsd-signature tsd-kind-icon">schema<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/main.ts#L55">main.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/data/resolvers.ts#L19">data/resolvers.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="config" class="tsd-anchor"></a>
-					<h3>config</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">(</span>apiPort<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="createposts" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> create<wbr>Posts</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Posts<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/main.ts#L102">main.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/data/resolvers.ts#L51">data/resolvers.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Config the server.</p>
+									<p>Set the mock data</p>
 								</div>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>apiPort: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="listen" class="tsd-anchor"></a>
-					<h3>listen</h3>
+					<a name="createresolvers" class="tsd-anchor"></a>
+					<h3>create<wbr>Resolvers</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">listen<span class="tsd-signature-symbol">(</span>port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Resolvers<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/main.ts#L110">main.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/data/resolvers.ts#L31">data/resolvers.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Listen at the configurated ports.</p>
+									<p>Create the resolvers</p>
 								</div>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>port: <span class="tsd-signature-type">String</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setupendpoints" class="tsd-anchor"></a>
-					<h3>setup<wbr>Endpoints</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">setup<wbr>Endpoints<span class="tsd-signature-symbol">(</span>endpoints<span class="tsd-signature-symbol">: </span><a href="../interfaces/_main_.endpoints.html" class="tsd-signature-type">Endpoints</a>, schema<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/main.ts#L77">main.ts:77</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Setup endpoints.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>endpoints: <a href="../interfaces/_main_.endpoints.html" class="tsd-signature-type">Endpoints</a></h5>
-								</li>
-								<li>
-									<h5>schema: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -269,7 +208,7 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_data_resolvers_.html">"data/resolvers"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -278,7 +217,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">"index"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_main_.html">"main"</a>
 					</li>
 				</ul>
@@ -288,44 +227,29 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_main_.irasyncbackend.html" class="tsd-kind-icon">Irasync<wbr>Backend</a>
+						<a href="_data_resolvers_.resolvers.html" class="tsd-kind-icon">Resolvers</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_main_.irasyncbackend.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_data_resolvers_.resolvers.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_main_.irasyncbackend.html#express_port" class="tsd-kind-icon">EXPRESS_<wbr>PORT</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_data_resolvers_.resolvers.html#postsdata" class="tsd-kind-icon">posts<wbr>Data</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_main_.irasyncbackend.html#app" class="tsd-kind-icon">app</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_data_resolvers_.resolvers.html#resolvers" class="tsd-kind-icon">resolvers</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_main_.irasyncbackend.html#schema" class="tsd-kind-icon">schema</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_main_.irasyncbackend.html#config" class="tsd-kind-icon">config</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="_data_resolvers_.resolvers.html#createposts" class="tsd-kind-icon">create<wbr>Posts</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_main_.irasyncbackend.html#listen" class="tsd-kind-icon">listen</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_main_.irasyncbackend.html#setupendpoints" class="tsd-kind-icon">setup<wbr>Endpoints</a>
+								<a href="_data_resolvers_.resolvers.html#createresolvers" class="tsd-kind-icon">create<wbr>Resolvers</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../interfaces/_main_.apiconfig.html" class="tsd-kind-icon">Api<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../interfaces/_main_.debugconfig.html" class="tsd-kind-icon">Debug<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../interfaces/_main_.endpoints.html" class="tsd-kind-icon">Endpoints</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../interfaces/_main_.params.html" class="tsd-kind-icon">Params</a>
+						<a href="../interfaces/_data_resolvers_.ipost.html" class="tsd-kind-icon">IPost</a>
 					</li>
 				</ul>
 			</nav>
