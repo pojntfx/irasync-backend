@@ -1,0 +1,19 @@
+{
+  "name": "irasync-backend",
+  "version": "0.0.1-alpha",
+  "description": "An Irasync GraphQL API backend implemented using Apollo Server for Express and MongoDB.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irasync/irasync-backend.git"
+  },
+  "author": "Felicitas Pojtinger",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/irasync/irasync-backend/issues"
+  },
+  "homepage": "https://github.com/irasync/irasync-backend#readme"
+}
