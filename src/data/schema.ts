@@ -1,17 +1,21 @@
 // Enable the exporting of the schema
-import { makeExecutableSchema } from 'graphql-tools';
+import { makeExecutableSchema } from "graphql-tools";
 // Import the resolver class
-import { Resolvers } from './resolvers';
+import { Resolvers } from "./resolvers";
 
 /**
- * The API's "syntax" definition
+ * The API's syntax definition
  */
 export class Schema {
-  readonly types: String[]
-  executableSchema: any
-  resolvers: any
+  // The schema type definitions
+  private readonly types: string[];
+  // The schema that has been made executable
+  private executableSchema: any;
+  // The new instance of resolvers
+  private resolvers: any;
 
   constructor() {
+    // The type definitions
     this.types = [`
       # A post by an author
       type Post {
@@ -24,24 +28,32 @@ export class Schema {
       }
       # The queries
       type Query {
-        # Returns a post by it's id, which is required
+        # Return a post by it's id, which is required
         post(id: Int!): Post
-        # Returns all posts
+        # Return all posts
         posts: [Post]
       }
     `];
+    // Use the resolvers to make the schema usable
     this.createResolvers();
     this.makeSchemaExecutable();
   }
 
-  createResolvers() {
+  /**
+   * Create a new instance of the Resolvers class
+   */
+  private createResolvers() {
     this.resolvers = new Resolvers();
   }
 
-  makeSchemaExecutable() {
+  /**
+   * Create an executable schema from the schema typeDefs in
+   * combination with the type definitions
+   */
+  private makeSchemaExecutable() {
     this.executableSchema = makeExecutableSchema({
+      resolvers: this.resolvers.resolvers,
       typeDefs: this.types,
-      resolvers: this.resolvers.resolvers
-    })
+    });
   }
 }

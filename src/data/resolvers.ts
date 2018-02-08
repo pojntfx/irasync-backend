@@ -2,12 +2,12 @@
  * Interface to verify that a returned post actually is a post
  */
 interface IPost {
+  community: string;
+  description: string;
   id: number;
   title: string;
-  username: string;
-  description: string;
-  community: string;
   url: string;
+  username: string;
 }
 
 /**
@@ -15,7 +15,7 @@ interface IPost {
  */
 export class Resolvers {
   // The mocked posts data
-  private postsData: [IPost];
+  private postsData: IPost[];
   private resolvers: any;
 
   constructor() {
