@@ -1,120 +1,123 @@
-// Use the express framework
-import * as express from 'express';
-// Enable query parsing
-import * as bodyParser from 'body-parser';
-// Use the apollo server for graphql
-import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
-
-// Use the schema
-import { Schema } from './data/schema';
+// Use the apollo server for graphql in express
+import { graphiqlExpress, graphqlExpress } from "apollo-server-express";
+// Enable the parsing of requests in express
+import * as bodyParser from "body-parser";
+// Use the express framework as the foundation
+import * as express from "express";
+// Use the executable schema
+import { Schema } from "./data/schema";
 
 /**
- * Main config parameters
+ * Main config parameters from the main configuration object passed at instanciation
  */
-interface Params {
-  api: ApiConfig;
-  debug: DebugConfig,
+interface IConfigParams {
+  api: IApiConfig;
+  debug: IDebugConfig;
 }
 
 /**
  * The API's config parameters
  */
-interface ApiConfig {
+interface IApiConfig {
   // The port that the API should use (i.e. '3000')
-  port: String;
+  port: string;
   // The enpoint that the API should use (i.e. '/graphql')
-  endpoint: String;
+  endpoint: string;
 }
 
 /**
- * GraphiQL's config parameters (debugging and testing)
+ * GraphiQL's config parameters (for debugging and testing)
  */
-interface DebugConfig {
-  // Whether graphiql (for debugging) should be enabled
-  enabled: Boolean,
-  // The graphiql (debugging) endpoint
-  endpoint: String
+interface IDebugConfig {
+  // Whether graphiql (for debugging and testing) should be enabled
+  enabled: boolean;
+  // The graphiql (debugging and testing) endpoint
+  endpoint: string;
 }
 
 /**
- * All of the available endpoints
+ * To simplify the passing along of the endpoint to the createEndpoints method
  */
-interface Endpoints {
-  api: String,
-  debugEnabled: Boolean,
-  debug: String
+interface IEndpoints {
+  api: string;
+  apiPort: string;
+  debugEnabled: boolean;
+  debug: string;
 }
 
 /**
  * Root of a new Irasync instance
  */
-class IrasyncBackend {
+export class IrasyncBackend {
 
-  readonly app: any;
-  EXPRESS_PORT: String;
-  schema: any;
+  // Holds the express instance
+  private readonly app: express.Application;
+  // Holds the schema object
+  private schema: any;
 
-  constructor(Params: Params) {
+  constructor(configParams: IConfigParams) {
     // Create new express instance
     this.app = express();
-    // Config the server
-    this.config(Params.api.port);
     // Create a new instance of the schema
-    this.schema = new Schema()
-    // Setup the endpoints
+    this.schema = new Schema();
+    // Setup and config the endpoints
     this.setupEndpoints({
-      api: Params.api.endpoint,
-      debugEnabled: Params.debug.enabled,
-      debug: Params.debug.endpoint
+      api: configParams.api.endpoint,
+      apiPort: configParams.api.port,
+      debug: configParams.debug.endpoint,
+      debugEnabled: configParams.debug.enabled,
     }, this.schema.executableSchema);
-    // Listen at EXPRESS_PORT
-    this.listen(this.EXPRESS_PORT);
+    // Start the server by listening at the specified port and display a success message in the console
+    this.listen({
+      api: configParams.api.endpoint,
+      apiPort: configParams.api.port,
+      debug: configParams.debug.endpoint,
+      debugEnabled: configParams.debug.enabled,
+    });
   }
-
   /**
    * Setup endpoints.
    */
-  setupEndpoints(endpoints: Endpoints, schema: any): void {
-    // Default endpoint to guid the user to the right ones
-    this.app.get('/', (req, res) => {
-      res.send(`
-You\'ve reached an Irasync API server.
-Point your browser to <a href="${endpoints.debug}">${endpoints.debug}</a> to debug or <a href="${endpoints.api}">${endpoints.api}</a> to use it.`);
+  private setupEndpoints(endpoints: IEndpoints, schema: any): void {
+    // Show an index screen if user reached root
+    this.app.get("/", (req, res) => {
+      res.send(`<h1>You\'ve reached an Irasync API server.</h1>
+<p>Point your browser to <a href="${endpoints.debug}">${endpoints.debug}</a> to <b>debug</b> or
+<a href="${endpoints.api}">${endpoints.api}</a> to <b>use it with a client</b>.</p>`);
     });
 
     // The API endpoint
     this.app.use(endpoints.api, bodyParser.json(), graphqlExpress({
-      schema
+      schema,
     }));
 
     // The debug (GraphiQL) endpoint should only be created if it was enabled
     if (endpoints.debugEnabled) {
+      // The debug endpoint
       this.app.use(endpoints.debug, graphiqlExpress({
         // Pass the api's endpoint
-        endpointURL: endpoints.api.toString()
-      }))
+        endpointURL: endpoints.api.toString(),
+      }));
     }
   }
 
   /**
-   * Config the server.
+   * Listen at the specified port.
    */
-  config(apiPort: String): void {
-    // The port that express will run at
-    this.EXPRESS_PORT = apiPort;
-  }
-
-  /**
-   * Listen at the configurated ports.
-   */
-  listen(port: String): void {
-    this.app.listen(port, () => {
+  private listen(endpoints: IEndpoints): void {
+    this.app.listen(endpoints.apiPort, () => {
+      // tslint:disable-next-line:no-console (those are the only ones)
       console.log(`
 SUCCESS >>> IRASYNC API ONLINE <<< SUCCESS
-API URL: http://localhost:${this.EXPRESS_PORT}
-      `);
-    })
+API URL: http://localhost:${endpoints.apiPort}${endpoints.api}`);
+      if (endpoints.debugEnabled) {
+        // tslint:disable-next-line:no-console (those is the only ones)
+        console.log(`DEBUG URL: http://localhost:${endpoints.apiPort}${endpoints.debug}
+        `);
+      } else {
+        // tslint:disable-next-line:no-console (those is the only ones)
+        console.log("");
+      }
+    });
   }
 }
-
-export default IrasyncBackend;

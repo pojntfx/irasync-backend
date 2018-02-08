@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Endpoints | Irasync Backend</title>
+	<title>IApiConfig | Irasync Backend</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -59,10 +59,10 @@
 					<a href="../modules/_main_.html">&quot;main&quot;</a>
 				</li>
 				<li>
-					<a href="_main_.endpoints.html">Endpoints</a>
+					<a href="_main_.iapiconfig.html">IApiConfig</a>
 				</li>
 			</ul>
-			<h1>Interface Endpoints</h1>
+			<h1>Interface IApiConfig</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>All of the available endpoints</p>
+						<p>The API&#39;s config parameters</p>
 					</div>
 				</div>
 			</section>
@@ -80,7 +80,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Endpoints</span>
+						<span class="target">IApiConfig</span>
 					</li>
 				</ul>
 			</section>
@@ -91,9 +91,8 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_main_.endpoints.html#api" class="tsd-kind-icon">api</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_main_.endpoints.html#debug" class="tsd-kind-icon">debug</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_main_.endpoints.html#debugenabled" class="tsd-kind-icon">debug<wbr>Enabled</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_main_.iapiconfig.html#endpoint" class="tsd-kind-icon">endpoint</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_main_.iapiconfig.html#port" class="tsd-kind-icon">port</a></li>
 							</ul>
 						</section>
 					</div>
@@ -102,32 +101,22 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="api" class="tsd-anchor"></a>
-					<h3>api</h3>
-					<div class="tsd-signature tsd-kind-icon">api<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<a name="endpoint" class="tsd-anchor"></a>
+					<h3>endpoint</h3>
+					<div class="tsd-signature tsd-kind-icon">endpoint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/main.ts#L43">main.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/7b6497b/src/main.ts#L25">main.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="debug" class="tsd-anchor"></a>
-					<h3>debug</h3>
-					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span></div>
+					<a name="port" class="tsd-anchor"></a>
+					<h3>port</h3>
+					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/main.ts#L45">main.ts:45</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="debugenabled" class="tsd-anchor"></a>
-					<h3>debug<wbr>Enabled</h3>
-					<div class="tsd-signature tsd-kind-icon">debug<wbr>Enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/5cb5352/src/main.ts#L44">main.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/7b6497b/src/main.ts#L23">main.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -158,32 +147,29 @@
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="../classes/_main_.irasyncbackend.html" class="tsd-kind-icon">Irasync<wbr>Backend</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_main_.apiconfig.html" class="tsd-kind-icon">Api<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_main_.debugconfig.html" class="tsd-kind-icon">Debug<wbr>Config</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_main_.endpoints.html" class="tsd-kind-icon">Endpoints</a>
+						<a href="_main_.iapiconfig.html" class="tsd-kind-icon">IApi<wbr>Config</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_main_.endpoints.html#api" class="tsd-kind-icon">api</a>
+								<a href="_main_.iapiconfig.html#endpoint" class="tsd-kind-icon">endpoint</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_main_.endpoints.html#debug" class="tsd-kind-icon">debug</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_main_.endpoints.html#debugenabled" class="tsd-kind-icon">debug<wbr>Enabled</a>
+								<a href="_main_.iapiconfig.html#port" class="tsd-kind-icon">port</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_main_.params.html" class="tsd-kind-icon">Params</a>
+						<a href="_main_.iconfigparams.html" class="tsd-kind-icon">IConfig<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_main_.idebugconfig.html" class="tsd-kind-icon">IDebug<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_main_.iendpoints.html" class="tsd-kind-icon">IEndpoints</a>
 					</li>
 				</ul>
 			</nav>

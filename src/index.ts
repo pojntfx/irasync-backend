@@ -1,18 +1,18 @@
-// Use the Irasync backend server
-import IrasyncBackend from './main'
+// Import the main class
+import { IrasyncBackend } from "./main";
 
 // Create the root instance with a configuration object
-let irasyncBackend = new IrasyncBackend({
+const irasyncBackend = new IrasyncBackend({
   // API connection details
   api: {
-    port: '3000',
-    endpoint: '/api'
+    endpoint: "/api",
+    port: "3000",
   },
-  // Debugging interface definition
+  // Debugging interface configuration
   debug: {
     enabled: true,
-    endpoint: '/debug'
-  }
+    endpoint: "/debug",
+  },
   // Database config
   // dbHost: 'http://localhost',
   // dbName: 'irasync'
