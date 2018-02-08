@@ -9,11 +9,11 @@
 # install dependencies with npm:
 npm install
 
-# serve with hot reload at localhost:8080
+# serve the API server at localhost:8080
 npm start
 
-# show the docs at localhost:8080
-npm run docs:open
+# serve the docs at localhost:8080
+npm run docs:serve
 
 # update the docs
 npm run docs:update
