@@ -5,6 +5,9 @@ import * as bodyParser from 'body-parser';
 // Use the apollo server for graphql
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 
+// Use the schema
+import { Schema } from './data/schema';
+
 /**
  * Main config parameters
  */
@@ -47,20 +50,23 @@ interface Endpoints {
  */
 class IrasyncBackend {
 
-  app: any;
+  readonly app: any;
   EXPRESS_PORT: String;
+  schema: any;
 
   constructor(Params: Params) {
     // Create new express instance
     this.app = express();
     // Config the server
     this.config(Params.api.port);
+    // Create a new instance of the schema
+    this.schema = new Schema()
     // Setup the endpoints
     this.setupEndpoints({
       api: Params.api.endpoint,
       debugEnabled: Params.debug.enabled,
       debug: Params.debug.endpoint
-    });
+    }, this.schema.executableSchema);
     // Listen at EXPRESS_PORT
     this.listen(this.EXPRESS_PORT);
   }
@@ -68,7 +74,7 @@ class IrasyncBackend {
   /**
    * Setup endpoints.
    */
-  setupEndpoints(endpoints: Endpoints): void {
+  setupEndpoints(endpoints: Endpoints, schema: any): void {
     // Default endpoint to guid the user to the right ones
     this.app.get('/', (req, res) => {
       res.send(`
@@ -77,7 +83,9 @@ Point your browser to <a href="${endpoints.debug}">${endpoints.debug}</a> to deb
     });
 
     // The API endpoint
-    this.app.use(endpoints.api, bodyParser.json(), graphqlExpress({}));
+    this.app.use(endpoints.api, bodyParser.json(), graphqlExpress({
+      schema
+    }));
 
     // The debug (GraphiQL) endpoint should only be created if it was enabled
     if (endpoints.debugEnabled) {
