@@ -4,6 +4,7 @@
   "description": "An Irasync GraphQL API backend implemented using Apollo Server for Express and MongoDB.",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/irasync/irasync-backend/issues"
   },
-  "homepage": "https://github.com/irasync/irasync-backend#readme"
+  "homepage": "https://github.com/irasync/irasync-backend#readme",
+  "dependencies": {
+    "nodemon": "^1.14.12",
+    "ts-node": "^4.1.0",
+    "typescript": "^2.7.1"
+  }
 }
