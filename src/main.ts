@@ -12,7 +12,7 @@ import { Schema } from './data/schema';
  * Main config parameters
  */
 interface Params {
-  api: ApiConfig,
+  api: ApiConfig;
   debug: DebugConfig,
 }
 

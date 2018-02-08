@@ -17,6 +17,9 @@ npm run docs:serve
 
 # update the docs
 npm run docs:update
+
+# lint the code (refer to the tslint docs if you want to use this in your IDE)
+npm run lint
 ```
 
 ## License
