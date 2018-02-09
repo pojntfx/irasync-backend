@@ -26,12 +26,55 @@ export class Schema {
         community: String
         url: String
       }
+
+
+
+      # A user
+      type User {
+        meta: UserMeta
+        posts: [Post2]
+      }
+      # A user's meta information
+      type UserMeta {
+        id: Int
+        name: String
+        firstName: String
+        lastName: String
+      }
+      # A user's post (neo)
+      type Post2 {
+        meta: PostMeta
+        body: PostBody
+        comments: [Post2]
+      }
+      # A post's meta info
+      type PostMeta {
+        id: Int
+        votes: Int
+      }
+      # A post's content
+      type PostBody {
+        title: String
+        description: String
+      }
+
+
+
       # The queries
       type Query {
         # Return a post by it's id, which is required
         post(id: Int!): Post
         # Return all posts
         posts: [Post]
+
+        # Return all users
+        users: [User]
+        # Return a user by either it's id or it's name (XOR)
+        user(id: Int, name: String): User
+
+
+
+
       }
       # The mutations
       type Mutation {
