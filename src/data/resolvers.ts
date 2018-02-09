@@ -30,8 +30,35 @@ export class Resolvers {
    */
   public createResolvers() {
     this.resolvers = {
+      Mutation: {
+        // Create a new post
+        // Use fancy ES6 object deconstruction syntax for cleaner code, replaces args.arg
+        createPost: (root, { community, description, title, url, username }): IPost => {
+          // Check whether the non-required arguments have been provided, if not insert
+          if (url == null || url === "") {
+            url = "url_not_provided";
+          }
+          if (description == null || description === "") {
+            description = "description_not_provided";
+          }
+          // Assemble the new post
+          const newPost = {
+            community,
+            description,
+            id: this.postsData.length,
+            title,
+            url,
+            username,
+          };
+          // Add the post to the mock data
+          this.postsData.push(newPost);
+          // Return the newPost to the client
+          return newPost;
+        },
+      },
       Query: {
         // Return a post if it's id matches the one queried for
+        // {id} is ES6 object deconstruction to get the id from the args object passed in here
         post: (root, { id }): IPost => {
           return this.postsData.filter((post) => {
             return post.id === id;
