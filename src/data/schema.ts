@@ -62,16 +62,14 @@ export class Schema {
 
       # The queries
       type Query {
-        # Return a post by it's id, which is required
-        post(id: Int!): Post
-        # Return all posts
-        posts: [Post]
 
         # Return all users
         users: [User]
         # Return a user by either it's id or it's name (XOR)
         user(id: Int, name: String): User
 
+        # Return a user's post by the post's id
+        post(id: Int!): Post
 
 
 
