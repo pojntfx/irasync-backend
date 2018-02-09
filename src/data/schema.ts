@@ -17,7 +17,7 @@ export class Schema {
   constructor() {
     // The type definitions
     this.types = [`
-      # A post by an author
+      # A post by the author's username
       type Post {
         id: Int
         title: String
@@ -32,6 +32,22 @@ export class Schema {
         post(id: Int!): Post
         # Return all posts
         posts: [Post]
+      }
+      # The mutations
+      type Mutation {
+        # Create a post
+        createPost(
+          # The author's username
+          username: String!,
+          # The community that the post should be posted in
+          community: String!,
+          # The post's title (short and concise)
+          title: String!,
+          # The URL that the post should lead to
+          url: String,
+          # The posts content
+          description: String
+        ): Post
       }
     `];
     // Use the resolvers to make the schema usable
