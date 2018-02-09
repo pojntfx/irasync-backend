@@ -58,17 +58,13 @@ export class Resolvers {
         },
       },
       Query: {
-        // Return a post if it's id matches the one queried for
-        // {id} is ES6 object deconstruction to get the id from the args object passed in here
-        post: (root, { id }): IPost => {
-          return this.postsData.filter((post) => {
-            return post.id === id;
+        // Return a post by it's id
+        post: (root, { id }): IPost2 => {
+          return this.users[0].posts.filter((post) => {
+            return post.meta.id === id;
           })[0];
         },
-        // Return an objectArray of all posts
-        posts: (): object[] => {
-          return this.postsData;
-        },
+        // {id} is ES6 object deconstruction to get the id from the args object passed in here
         // Return a user by ID
         user: (root, { id, name }): IUser => {
           // ID has been provided, name not
