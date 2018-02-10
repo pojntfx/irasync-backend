@@ -37,6 +37,10 @@ export default class Database {
     dbPassword,
   }) {
     this.sequelize = new Sequelize(dbName, dbUserName, dbPassword, {
+      define: {
+        underscored: true, // Standardizes the table column names, use fields when needed in model
+        underscoredAll: true, // Standardizes the table names
+      },
       dialect: "postgres",
       operatorsAliases: {
         $and: Sequelize.Op.and,
@@ -53,16 +57,19 @@ export default class Database {
 
   private createModels() {
     this.models = {
-      user: this.sequelize.import("./user"),
+      Community: this.sequelize.import("./community"),
+      Organisation: this.sequelize.import("./organisation"),
+      Post: this.sequelize.import("./post"),
+      User: this.sequelize.import("./user"),
     };
   }
 
   private associateModels() {
-    // Object.keys(this).forEach((modelName) => {
-    //   if (this[modelName].associate) {
-    //     this[modelName].associate(this);
-    //   }
-    // });
+    Object.keys(this.models).forEach((modelName) => {
+      if (this.models[modelName].associate) {
+        this.models[modelName].associate(this.models);
+      }
+    });
   }
 
 }

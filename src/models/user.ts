@@ -1,10 +1,25 @@
-module.exports = (sequelize, DataTypes) => {
-  var User = sequelize.define('User', {
-    username: DataTypes.STRING
+export default (sequelize, DataTypes) => {
+
+  const User = sequelize.define("user", {
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    password: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING,
+      unique: true,
+    },
   });
 
-  User.associate = function (models) {
-    models.User.hasMany(models.Task);
+  User.associate = (models) => {
+    User.belongsToMany(models.Community, {
+      foreignKey: {
+        field: "user_id",
+        name: "userId",
+      },
+      through: "member",
+    });
   };
 
   return User;
