@@ -53,7 +53,7 @@ export default class Database {
 
   private createModels() {
     this.models = {
-      // user: this.sequelize.import("./users"),
+      user: this.sequelize.import("./user"),
     };
   }
 

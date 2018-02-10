@@ -9,7 +9,15 @@
 # install dependencies with npm:
 npm install
 
-# serve the API server at localhost:8080 with hot reloading
+# set the database credentials in src/index.ts
+# read the "psql" manpage for more info
+const irasyncBackend = new IrasyncBackend({
+  dbName: "yourdbname",
+  dbPassword: "yourdbuserpassword",
+  dbUserName: "yourdbusername",
+});
+
+# serve the API server at localhost:3000 with hot reloading (use /graphiql for testing)
 npm start
 
 # serve the docs at localhost:8080
