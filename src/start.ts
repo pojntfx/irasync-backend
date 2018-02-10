@@ -95,7 +95,8 @@ export class IrasyncBackend {
       dbUserName,
     });
     // Sync with the database, then start the express server
-    this.database.sequelize.sync().then(() => {
+    // Use "{ force: true }" if you want to delete all existing db tables
+    this.database.sequelize.sync({ force: true }).then(() => {
       // Listen on port apiPort
       this.startExpress({
         apiPort,
