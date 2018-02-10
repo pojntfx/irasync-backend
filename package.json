@@ -26,6 +26,8 @@
     "graphql": "^0.11.7",
     "graphql-tools": "^2.20.2",
     "nodemon": "^1.14.12",
+    "pg": "^7.4.1",
+    "sequelize": "^4.33.2",
     "ts-node": "^4.1.0",
     "typescript": "^2.7.1",
     "typescript-logging": "^0.5.0"

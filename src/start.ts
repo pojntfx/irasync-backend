@@ -4,6 +4,7 @@ import * as express from "express";
 import { makeExecutableSchema } from "graphql-tools";
 import { catStartup } from "./logging";
 
+import Database from "./models";
 import resolvers from "./resolvers";
 import typeDefs from "./schema";
 
@@ -12,6 +13,9 @@ export interface IStartParams {
   apiPort: number;
   graphiqlEnabled: boolean;
   graphiqlEndpoint?: string;
+  dbName: string;
+  dbUserName: string;
+  dbPassword: string;
 }
 
 /**
@@ -19,12 +23,21 @@ export interface IStartParams {
  */
 export class IrasyncBackend {
 
-  private app: express.Application;
+  private server: express.Application;
+  private database: any;
 
-  constructor({ apiEndpoint, apiPort, graphiqlEnabled, graphiqlEndpoint }: IStartParams) {
+  constructor({
+    apiEndpoint,
+    dbName,
+    dbUserName,
+    dbPassword,
+    apiPort,
+    graphiqlEnabled,
+    graphiqlEndpoint,
+  }: IStartParams) {
     try {
       // Create new express instance
-      this.app = express();
+      this.server = express();
       // Enable graphql middleware
       this.connectGraphQl({
         apiEndpoint,
@@ -37,9 +50,12 @@ export class IrasyncBackend {
           graphiqlEndpoint,
         });
       }
-      // Listen on port
-      this.startExpress({
+      // Connect to database, then tell express to listen
+      this.startServers({
         apiPort,
+        dbName,
+        dbPassword,
+        dbUserName,
       });
       // Log status message
       this.logStatus({ apiPort, apiEndpoint, graphiqlEndpoint, graphiqlEnabled });
@@ -48,8 +64,10 @@ export class IrasyncBackend {
     }
   }
 
-  private startExpress({ apiPort }) {
-    this.app.listen(apiPort);
+  private connectGraphQl({ apiEndpoint, schema }) {
+    this.server.use(apiEndpoint, bodyParser.json(), graphqlExpress({
+      schema,
+    }));
   }
 
   private makeSchemaExecutable() {
@@ -60,17 +78,41 @@ export class IrasyncBackend {
     });
   }
 
-  private connectGraphQl({ apiEndpoint, schema }) {
-    this.app.use(apiEndpoint, bodyParser.json(), graphqlExpress({
-      schema,
-    }));
-  }
-
   private connectGraphiQl({ graphiqlEndpoint, apiEndpoint }) {
-    this.app.get(graphiqlEndpoint, graphiqlExpress({ endpointURL: apiEndpoint }));
+    this.server.get(graphiqlEndpoint, graphiqlExpress({ endpointURL: apiEndpoint }));
   }
 
-  private logStatus({ apiPort, apiEndpoint, graphiqlEnabled, graphiqlEndpoint }) {
+  private startServers({
+    apiPort,
+    dbName,
+    dbPassword,
+    dbUserName,
+  }) {
+    // Create new database instance
+    this.database = new Database({
+      dbName,
+      dbPassword,
+      dbUserName,
+    });
+    // Sync with the database, then start the express server
+    this.database.sequelize.sync().then(() => {
+      // Listen on port apiPort
+      this.startExpress({
+        apiPort,
+      });
+    });
+  }
+
+  private startExpress({ apiPort }) {
+    this.server.listen(apiPort);
+  }
+
+  private logStatus({
+    apiPort,
+    apiEndpoint,
+    graphiqlEnabled,
+    graphiqlEndpoint,
+  }) {
     catStartup.info(() => `Irasync API Server listening on port ${apiPort}.`);
     catStartup.info(() => `GraphQL Endpoint: ${apiEndpoint}`);
     if (graphiqlEnabled) {
