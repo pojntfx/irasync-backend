@@ -27,7 +27,8 @@
     "graphql-tools": "^2.20.2",
     "nodemon": "^1.14.12",
     "ts-node": "^4.1.0",
-    "typescript": "^2.7.1"
+    "typescript": "^2.7.1",
+    "typescript-logging": "^0.5.0"
   },
   "devDependencies": {
     "live-server": "^1.2.0",
