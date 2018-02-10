@@ -1,3 +1,8 @@
-import IrasyncBackend from "./start";
+import { IrasyncBackend, IStartParams } from "./start";
 
-irasyncBackend = new IrasyncBackend();
+const irasyncBackend = new IrasyncBackend({
+  apiEndpoint: "/graphql",
+  apiPort: 3000,
+  graphiqlEnabled: true,
+  graphiqlEndpoint: "/graphiql",
+});
