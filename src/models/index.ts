@@ -58,7 +58,7 @@ export default class Database {
   private createModels() {
     this.models = {
       Community: this.sequelize.import("./community"),
-      Organisation: this.sequelize.import("./organisation"),
+      Organization: this.sequelize.import("./organization"),
       Post: this.sequelize.import("./post"),
       User: this.sequelize.import("./user"),
     };
