@@ -1,24 +1,24 @@
 export default (sequelize, DataTypes) => {
 
-  const Organisation = sequelize.define("team", {
+  const Organization = sequelize.define("organization", {
     name: {
       type: DataTypes.STRING,
       unique: true,
     },
   });
 
-  Organisation.associate = (models) => {
-    Organisation.belongsToMany(models.User, {
+  Organization.associate = (models) => {
+    Organization.belongsToMany(models.User, {
       foreignKey: {
         field: "user_id",
         name: "userId",
       },
       through: "member",
     });
-    Organisation.belongsTo(models.User, {
+    Organization.belongsTo(models.User, {
       foreignKey: "owner",
     });
   };
 
-  return Organisation;
+  return Organization;
 };

@@ -4,6 +4,9 @@ export default (sequelize, DataTypes) => {
     text: {
       type: DataTypes.STRING,
     },
+    title: {
+      type: DataTypes.STRING,
+    },
   });
 
   Post.associate = (models) => {

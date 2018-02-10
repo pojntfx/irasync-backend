@@ -13,12 +13,19 @@ export default (sequelize, DataTypes) => {
   });
 
   User.associate = (models) => {
-    User.belongsToMany(models.Community, {
+    User.belongsToMany(models.Organization, {
       foreignKey: {
         field: "user_id",
         name: "userId",
       },
       through: "member",
+    });
+    User.belongsToMany(models.Community, {
+      foreignKey: {
+        field: "user_id",
+        name: "userId",
+      },
+      through: "community_member",
     });
   };
 

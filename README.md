@@ -1,6 +1,6 @@
 # irasync-backend
 
-> An Irasync GraphQL API backend implemented using Apollo Server for Express and MongoDB.
+> An Irasync GraphQL API backend implemented using Apollo Server for Express and PostgreSQL.
 > Irasync is still evaluating and testing different stacks! Check out the different branches of this repo to try out the experiments.
 
 ## Build Setup

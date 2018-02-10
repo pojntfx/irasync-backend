@@ -10,11 +10,18 @@ export default (sequelize, DataTypes) => {
   });
 
   Community.associate = (models) => {
-    Community.belongsTo(models.Organisation, {
+    Community.belongsTo(models.Organization, {
       foreignKey: {
-        field: "organisation_id",
-        name: "organisationId",
+        field: "organization_id",
+        name: "organizationId",
       },
+    });
+    Community.belongsToMany(models.User, {
+      foreignKey: {
+        field: "community_id",
+        name: "communityId",
+      },
+      through: "community_member",
     });
   };
 
