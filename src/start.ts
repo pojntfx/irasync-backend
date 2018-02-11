@@ -5,8 +5,9 @@ import { makeExecutableSchema } from "graphql-tools";
 import { catStartup } from "./logging";
 
 import Database from "./models";
-import resolvers from "./resolvers";
-import typeDefs from "./schema";
+
+import { fileLoader, mergeResolvers, mergeTypes } from "merge-graphql-schemas";
+import * as path from "path";
 
 export interface IStartParams {
   apiEndpoint: string;
@@ -70,11 +71,20 @@ export class IrasyncBackend {
     }));
   }
 
+  private mergeResolvers() {
+    return mergeResolvers(fileLoader(path.join(__dirname, "./resolvers")));
+  }
+
+  private mergeSchemas() {
+    return mergeTypes(fileLoader(path.join(__dirname, "./schemas")));
+  }
+
   private makeSchemaExecutable() {
     return makeExecutableSchema({
-      // The resolvers and typeDefs come from the imports
-      resolvers,
-      typeDefs,
+      // Load and merge the resolvers
+      resolvers: this.mergeResolvers(),
+      // Load and merge the schema modules
+      typeDefs: this.mergeSchemas(),
     });
   }
 
