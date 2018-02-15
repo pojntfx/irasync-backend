@@ -4,7 +4,7 @@
 > Irasync is still evaluating and testing different stacks! Check out the different branches of this repo to try out the experiments.
 > Node >= 9, yarn and docker should be installed using your OS's package manager before continuing
 
-## Build Setup
+## Build Setup (Before migration to prisma)
 
 ``` bash
 # install dependencies with npm:
@@ -43,6 +43,9 @@ yarn start:db
 # start the API server
 yarn start:api
 
+# start GraphiQL for tooling
+yarn start:graphiql
+
 # log information about the API server to console
 yarn info
 
@@ -55,6 +58,21 @@ yarn docs:update
 # lint the code (refer to the tslint docs if you want to use this in your IDE)
 yarn lint
 ```
+
+## Test the API
+
+1. Start the Docker container and API server using the commands above
+2. Start GraphiQl with ```yarn start:graphiql``` to open up a new browser window
+
+3. Signup with the following mutation:
+   ```sdl
+   # Mutation will go here at some point
+   ```
+4. Login with following mutation:
+   ```sdl
+   # Mutation will go here at some point
+   ```
+5. Commit queries, mutations, subscriptions etc. in GraphiQl or startup your local instance of an [Irasync Frontend](https://github.com/irasync/irasync-frontend-web)!
 
 ## License
 
