@@ -7,7 +7,9 @@
     "rootDir": "src",
     "outDir": "dist",
     "lib": [
-      "esnext", "dom"
+      "esnext",
+      "dom",
+      "esnext.asynciterable"
     ]
   }
 }

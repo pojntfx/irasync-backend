@@ -4,15 +4,18 @@
   "description": "An Irasync GraphQL API backend implemented using Prisma.",
   "main": "src/index.js",
   "scripts": {
-    "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
-    "dev": "npm-run-all --parallel start playground",
-    "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
-    "playground": "graphql playground",
-    "build": "rimraf dist && tsc",
-    "docs:update": "typedoc --theme default --out docs/ src/ --module commonjs --name 'Irasync Backend'",
-    "docs:serve": "live-server docs/",
+    "start": "dotenv -- nodemon",
+    "start:db": "prisma local start",
+    "start:api": "dotenv -- nodemon",
+    "start:graphiql": "graphql playground",
+    "start:dev": "npm-run-all --parallel start start:graphiql",
+    "about:status": "prisma info",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
+    "build": "rimraf dist && tsc",
+    "test": "echo \"No tests have yet been created.\"",
+    "docs:update": "typedoc --theme default --out docs/ src/ --module commonjs --name 'Irasync Backend'",
+    "docs:serve": "live-server docs/"
   },
   "repository": {
     "type": "git",
