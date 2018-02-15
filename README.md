@@ -2,6 +2,7 @@
 
 > An Irasync GraphQL API backend implemented using Apollo Server for Express and PostgreSQL.
 > Irasync is still evaluating and testing different stacks! Check out the different branches of this repo to try out the experiments.
+> Node >= 9, yarn and docker should be installed using your OS's package manager before continuing
 
 ## Build Setup
 
@@ -28,6 +29,31 @@ npm run docs:update
 
 # lint the code (refer to the tslint docs if you want to use this in your IDE)
 npm run lint
+```
+
+## Build Setup (After migration to prisma)
+
+```bash
+# install dependencies
+yarn install
+
+# start your local development docker container
+yarn start:db
+
+# start the API server
+yarn start:api
+
+# log information about the API server to console
+yarn info
+
+# serve the docs at localhost:8080
+yarn docs:serve
+
+# update the docs after changes
+yarn docs:update
+
+# lint the code (refer to the tslint docs if you want to use this in your IDE)
+yarn lint
 ```
 
 ## License
