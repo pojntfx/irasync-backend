@@ -38,8 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 							<input type="checkbox" id="tsd-filter-only-exported" />
 							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
@@ -66,24 +64,79 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="irasync-backend">irasync-backend</h1>
 				<blockquote>
-					<p>An Irasync GraphQL API backend implemented using Apollo Server for Express and MongoDB.
-					Irasync is still evaluating and testing different stacks! Check out the different branches of this repo to try out the experiments.</p>
+					<p>An Irasync GraphQL API backend implemented using Apollo Server for Express and MySQL wrapped by Prisma.
+						Irasync is still evaluating and testing different stacks! Check out the different branches of this repo to try out the experiments.
+					Node &gt;= 9, npm, yarn and docker should be installed using your OS&#39;s package manager before continuing.</p>
+				</blockquote>
+				<h2 id="usage">Usage</h2>
+				<ol>
+					<li>Install the dependencies noted above</li>
+					<li>Start the Docker container <strong>AND</strong> API server using the commands below</li>
+					<li>Start GraphiQl with <code>yarn start:graphiql</code> to open up a new browser window</li>
+					<li>Signup with the following mutation:<pre><code class="lang-js">mutation {
+  signup(name: <span class="hljs-string">"yourname"</span>, <span class="hljs-attr">email</span>: <span class="hljs-string">"test@example.com"</span>, <span class="hljs-attr">password</span>: <span class="hljs-string">"yourpassword"</span>) {
+    token
+  }
+}
+</code></pre>
+					</li>
+					<li>Login with following mutation:<pre><code class="lang-js">mutation {
+  login(email: <span class="hljs-string">"test@example.com"</span>, <span class="hljs-attr">password</span>: <span class="hljs-string">"yourpassword"</span>) {
+    token
+  }
+}
+</code></pre>
+					</li>
+					<li>Authorize by adding the token from the mutation above to the HTTP Headers (on the bottom of GraphiQl):<pre><code class="lang-js">{
+  <span class="hljs-string">"Authorization"</span>: <span class="hljs-string">"Bearer yourtokenfromthemutationabovehere"</span>
+}
+</code></pre>
+					</li>
+					<li>Test if authorization works by querying your private drafts:<pre><code class="lang-js">query {
+  drafts {
+    id
+  }
+}
+</code></pre>
+					</li>
+					<li>Commit other queries, mutations, subscriptions etc. in GraphiQl or startup your local instance of an <a href="https://github.com/irasync/irasync-frontend-web">Irasync Frontend</a>!</li>
+				</ol>
+				<blockquote>
+					<p>If you want to use this in production, set the correct options (secrets etc.) in the .env file for security.</p>
 				</blockquote>
 				<h2 id="build-setup">Build Setup</h2>
-				<pre><code class="lang-bash"><span class="hljs-comment"># install dependencies with npm:</span>
-npm install
+				<pre><code class="lang-bash"><span class="hljs-comment"># install dependencies</span>
+yarn install
 
-<span class="hljs-comment"># serve the API server at localhost:8080 with hot reloading</span>
-npm start
+<span class="hljs-comment"># start your local development docker container (this can take some time)</span>
+yarn start:db
 
-<span class="hljs-comment"># serve the docs at localhost:8080</span>
-npm run docs:serve
+<span class="hljs-comment"># start the API server (remember to start the docker container first) and open up graphiql (this is what you'll use most of the time)</span>
+yarn start:dev
 
-<span class="hljs-comment"># update the docs</span>
-npm run docs:update
+<span class="hljs-comment"># start the API server</span>
+yarn start:api
+
+<span class="hljs-comment"># start GraphiQL for testing</span>
+yarn start:graphiql
+
+<span class="hljs-comment"># log information on the API server (endpoints etc.) to the console</span>
+yarn about:status
 
 <span class="hljs-comment"># lint the code (refer to the tslint docs if you want to use this in your IDE)</span>
-npm run lint
+yarn lint
+
+<span class="hljs-comment"># debug the code</span>
+yarn debug
+
+<span class="hljs-comment"># compile typescript</span>
+yarn build
+
+<span class="hljs-comment"># serve the docs at localhost:8080</span>
+yarn docs:serve
+
+<span class="hljs-comment"># update the docs after changes</span>
+yarn docs:update
 </code></pre>
 				<h2 id="license">License</h2>
 				<p>Irasync Backend Reference Implementation
@@ -107,19 +160,34 @@ npm run lint
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_generated_prisma_.html">"generated/prisma"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_logging_.html">"logging"</a>
+						<a href="modules/_resolvers_authpayload_.html">"resolvers/<wbr>Auth<wbr>Payload"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_resolvers_.html">"resolvers"</a>
+						<a href="modules/_resolvers_mutation_auth_.html">"resolvers/<wbr>Mutation/auth"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_schema_.html">"schema"</a>
+						<a href="modules/_resolvers_mutation_post_.html">"resolvers/<wbr>Mutation/post"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_resolvers_query_.html">"resolvers/<wbr>Query"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_resolvers_index_.html">"resolvers/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_start_.html">"start"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_.html">"utils"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_logging_.html">"utils/logging"</a>
 					</li>
 				</ul>
 			</nav>

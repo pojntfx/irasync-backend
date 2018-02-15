@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;index&quot; | Irasync Backend</title>
+	<title>Post | Irasync Backend</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,45 +54,123 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_index_.html">&quot;index&quot;</a>
+					<a href="../modules/_generated_prisma_.html">&quot;generated/prisma&quot;</a>
+				</li>
+				<li>
+					<a href="_generated_prisma_.post.html">Post</a>
 				</li>
 			</ul>
-			<h1>External module &quot;index&quot;</h1>
+			<h1>Interface Post</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_generated_prisma_.node.html" class="tsd-signature-type">Node</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">Post</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Variables</h3>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_index_.html#irasyncbackend" class="tsd-kind-icon">irasync<wbr>Backend</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_generated_prisma_.post.html#author" class="tsd-kind-icon">author</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_generated_prisma_.post.html#createdat" class="tsd-kind-icon">created<wbr>At</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="_generated_prisma_.post.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_generated_prisma_.post.html#ispublished" class="tsd-kind-icon">is<wbr>Published</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_generated_prisma_.post.html#text" class="tsd-kind-icon">text</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_generated_prisma_.post.html#title" class="tsd-kind-icon">title</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_generated_prisma_.post.html#updatedat" class="tsd-kind-icon">updated<wbr>At</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="irasyncbackend" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> irasync<wbr>Backend</h3>
-					<div class="tsd-signature tsd-kind-icon">irasync<wbr>Backend<span class="tsd-signature-symbol">:</span> <a href="../classes/_start_.irasyncbackend.html" class="tsd-signature-type">IrasyncBackend</a><span class="tsd-signature-symbol"> =&nbsp;new IrasyncBackend({apiEndpoint: process.env.PRISMA_ENDPOINT,secret: process.env.PRISMA_SECRET,})</span></div>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="author" class="tsd-anchor"></a>
+					<h3>author</h3>
+					<div class="tsd-signature tsd-kind-icon">author<span class="tsd-signature-symbol">:</span> <a href="_generated_prisma_.user.html" class="tsd-signature-type">User</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/87ff3e9/src/index.ts#L6">index.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/87ff3e9/src/generated/prisma.ts#L760">generated/prisma.ts:760</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Creates a new instance of the Irasync Backend GraphQL API Server. Takes the config parameters from the .env file</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="createdat" class="tsd-anchor"></a>
+					<h3>created<wbr>At</h3>
+					<div class="tsd-signature tsd-kind-icon">created<wbr>At<span class="tsd-signature-symbol">:</span> <a href="../modules/_generated_prisma_.html#datetime" class="tsd-signature-type">DateTime</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/87ff3e9/src/generated/prisma.ts#L755">generated/prisma.ts:755</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <a href="../modules/_generated_prisma_.html#id_output" class="tsd-signature-type">ID_Output</a></div>
+					<aside class="tsd-sources">
+						<p>Overrides <a href="_generated_prisma_.node.html">Node</a>.<a href="_generated_prisma_.node.html#id">id</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/87ff3e9/src/generated/prisma.ts#L754">generated/prisma.ts:754</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="ispublished" class="tsd-anchor"></a>
+					<h3>is<wbr>Published</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Published<span class="tsd-signature-symbol">:</span> <a href="../modules/_generated_prisma_.html#boolean" class="tsd-signature-type">Boolean</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/87ff3e9/src/generated/prisma.ts#L757">generated/prisma.ts:757</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="text" class="tsd-anchor"></a>
+					<h3>text</h3>
+					<div class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">:</span> <a href="../modules/_generated_prisma_.html#string" class="tsd-signature-type">String</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/87ff3e9/src/generated/prisma.ts#L759">generated/prisma.ts:759</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="title" class="tsd-anchor"></a>
+					<h3>title</h3>
+					<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <a href="../modules/_generated_prisma_.html#string" class="tsd-signature-type">String</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/87ff3e9/src/generated/prisma.ts#L758">generated/prisma.ts:758</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="updatedat" class="tsd-anchor"></a>
+					<h3>updated<wbr>At</h3>
+					<div class="tsd-signature tsd-kind-icon">updated<wbr>At<span class="tsd-signature-symbol">:</span> <a href="../modules/_generated_prisma_.html#datetime" class="tsd-signature-type">DateTime</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/87ff3e9/src/generated/prisma.ts#L756">generated/prisma.ts:756</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -102,43 +180,70 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_generated_prisma_.html">"generated/prisma"</a>
-					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_index_.html">"index"</a>
+						<a href="../modules/_generated_prisma_.html">"generated/prisma"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_resolvers_authpayload_.html">"resolvers/<wbr>Auth<wbr>Payload"</a>
+						<a href="../modules/_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_resolvers_mutation_auth_.html">"resolvers/<wbr>Mutation/auth"</a>
+						<a href="../modules/_resolvers_authpayload_.html">"resolvers/<wbr>Auth<wbr>Payload"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_resolvers_mutation_post_.html">"resolvers/<wbr>Mutation/post"</a>
+						<a href="../modules/_resolvers_mutation_auth_.html">"resolvers/<wbr>Mutation/auth"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_resolvers_query_.html">"resolvers/<wbr>Query"</a>
+						<a href="../modules/_resolvers_mutation_post_.html">"resolvers/<wbr>Mutation/post"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_resolvers_index_.html">"resolvers/index"</a>
+						<a href="../modules/_resolvers_query_.html">"resolvers/<wbr>Query"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_start_.html">"start"</a>
+						<a href="../modules/_resolvers_index_.html">"resolvers/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_utils_.html">"utils"</a>
+						<a href="../modules/_start_.html">"start"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_utils_logging_.html">"utils/logging"</a>
+						<a href="../modules/_utils_.html">"utils"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_utils_logging_.html">"utils/logging"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_index_.html#irasyncbackend" class="tsd-kind-icon">irasync<wbr>Backend</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_generated_prisma_.post.html" class="tsd-kind-icon">Post</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_generated_prisma_.post.html#author" class="tsd-kind-icon">author</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_generated_prisma_.post.html#createdat" class="tsd-kind-icon">created<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="_generated_prisma_.post.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_generated_prisma_.post.html#ispublished" class="tsd-kind-icon">is<wbr>Published</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_generated_prisma_.post.html#text" class="tsd-kind-icon">text</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_generated_prisma_.post.html#title" class="tsd-kind-icon">title</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_generated_prisma_.post.html#updatedat" class="tsd-kind-icon">updated<wbr>At</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>

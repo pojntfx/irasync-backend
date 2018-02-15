@@ -1,80 +1,80 @@
-import { graphiqlExpress, graphqlExpress } from "apollo-server-express";
-import * as bodyParser from "body-parser";
-import * as express from "express";
-import { makeExecutableSchema } from "graphql-tools";
-import { catStartup } from "./logging";
-
+import { GraphQLServer } from "graphql-yoga";
+import { Prisma } from "./generated/prisma";
 import resolvers from "./resolvers";
-import typeDefs from "./schema";
 
+import { catStartup } from "./utils/logging";
+
+/**
+ * Configuration data for the Prisma server, should be passed from the .env file
+ */
 export interface IStartParams {
   apiEndpoint: string;
-  apiPort: number;
-  graphiqlEnabled: boolean;
-  graphiqlEndpoint?: string;
+  secret: string;
 }
 
 /**
- * Startup an Irasync backend server.
+ * Startup an Irasync backend server
  */
 export class IrasyncBackend {
+  // Holds the Prisma serve
+  private server;
 
-  private app: express.Application;
-
-  constructor({ apiEndpoint, apiPort, graphiqlEnabled, graphiqlEndpoint }: IStartParams) {
+  constructor({ apiEndpoint, secret }: IStartParams) {
     try {
-      // Create new express instance
-      this.app = express();
-      // Enable graphql middleware
-      this.connectGraphQl({
+      // Create a new prisma instance
+      this.createServer({
         apiEndpoint,
-        schema: this.makeSchemaExecutable(),
+        secret,
       });
-      // Enable graphiql middleware if needed
-      if (graphiqlEnabled) {
-        this.connectGraphiQl({
-          apiEndpoint,
-          graphiqlEndpoint,
-        });
-      }
-      // Listen on port
-      this.startExpress({
-        apiPort,
+      // Connect the server to the new prisma instance
+      this.startServer();
+      // Log the status message to the console
+      this.logStatus({
+        apiEndpoint,
       });
-      // Log status message
-      this.logStatus({ apiPort, apiEndpoint, graphiqlEndpoint, graphiqlEnabled });
     } catch (e) {
       throw new Error(e);
     }
   }
 
-  private startExpress({ apiPort }) {
-    this.app.listen(apiPort);
-  }
-
-  private makeSchemaExecutable() {
-    return makeExecutableSchema({
-      // The resolvers and typeDefs come from the imports
+  /**
+   * Create a new instance of the GraphQL yoga server
+   * This also generates the db models etc. from typeDefs and resolvers
+   * @param param0 API Endpoint and the server's secret for creating passwords etc.
+   */
+  private createServer({ apiEndpoint, secret }): void {
+    this.server = new GraphQLServer({
+      context: (req) => ({
+        ...req,
+        // Use the .env file to set secrets, endpoints etc.
+        db: new Prisma({
+          debug: true,
+          endpoint: apiEndpoint,
+          secret,
+        }),
+      }),
       resolvers,
-      typeDefs,
+      typeDefs: "./src/schema.graphql",
     });
   }
 
-  private connectGraphQl({ apiEndpoint, schema }) {
-    this.app.use(apiEndpoint, bodyParser.json(), graphqlExpress({
-      schema,
-    }));
+  /**
+   * Connect to the Prisma server
+   */
+  private startServer() {
+    this.server.start();
   }
 
-  private connectGraphiQl({ graphiqlEndpoint, apiEndpoint }) {
-    this.app.get(graphiqlEndpoint, graphiqlExpress({ endpointURL: apiEndpoint }));
-  }
-
-  private logStatus({ apiPort, apiEndpoint, graphiqlEnabled, graphiqlEndpoint }) {
-    catStartup.info(() => `Irasync API Server listening on port ${apiPort}.`);
+  /**
+   * Log a status message after the server has been started
+   * @param param0 The endpoint of the Prisma server
+   */
+  private logStatus({
+    apiEndpoint,
+  }): void {
+    catStartup.info(() => `Irasync API Server listening on port ${apiEndpoint}.`);
     catStartup.info(() => `GraphQL Endpoint: ${apiEndpoint}`);
-    if (graphiqlEnabled) {
-      catStartup.info(() => `GraphiQL Endpoint: ${graphiqlEndpoint}`);
-    }
+    catStartup.info(() => `GraphiQL URL: http://localhost:3000/playground`);
   }
+
 }
