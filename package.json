@@ -14,7 +14,7 @@
     "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
     "build": "rimraf dist && tsc",
     "test": "echo \"No tests have yet been created.\"",
-    "docs:update": "typedoc --theme default --out docs/ src/ --module commonjs --name 'Irasync Backend'",
+    "docs:update": "typedoc --theme default --out docs/ src/ --module commonjs --excludeExternals --exclude 'src/generated/*.*' --name 'Irasync Backend'",
     "docs:serve": "live-server docs/"
   },
   "repository": {
