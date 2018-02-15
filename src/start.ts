@@ -4,16 +4,19 @@ import resolvers from "./resolvers";
 
 import { catStartup } from "./utils/logging";
 
+/**
+ * Configuration data for the Prisma server, should be passed from the .env file
+ */
 export interface IStartParams {
   apiEndpoint: string;
   secret: string;
 }
 
 /**
- * Startup an Irasync backend server.
+ * Startup an Irasync backend server
  */
 export class IrasyncBackend {
-
+  // Holds the Prisma serve
   private server;
 
   constructor({ apiEndpoint, secret }: IStartParams) {
@@ -34,6 +37,11 @@ export class IrasyncBackend {
     }
   }
 
+  /**
+   * Create a new instance of the GraphQL yoga server
+   * This also generates the db models etc. from typeDefs and resolvers
+   * @param param0 API Endpoint and the server's secret for creating passwords etc.
+   */
   private createServer({ apiEndpoint, secret }): void {
     this.server = new GraphQLServer({
       context: (req) => ({
@@ -50,10 +58,17 @@ export class IrasyncBackend {
     });
   }
 
+  /**
+   * Connect to the Prisma server
+   */
   private startServer() {
     this.server.start();
   }
 
+  /**
+   * Log a status message after the server has been started
+   * @param param0 The endpoint of the Prisma server
+   */
   private logStatus({
     apiEndpoint,
   }): void {

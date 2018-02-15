@@ -1,7 +1,8 @@
 import { IrasyncBackend, IStartParams } from "./start";
 
-// Parameters are configured in the .env file
-// Will be passed in here in the future
+/**
+ * Creates a new instance of the Irasync Backend GraphQL API Server. Takes the config parameters from the .env file
+ */
 const irasyncBackend = new IrasyncBackend({
   apiEndpoint: process.env.PRISMA_ENDPOINT,
   secret: process.env.PRISMA_SECRET,
