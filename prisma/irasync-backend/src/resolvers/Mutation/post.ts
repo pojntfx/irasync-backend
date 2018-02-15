@@ -1,52 +1,52 @@
-import { getUserId, IContext } from '../../utils'
+import { getUserId, IContext } from "../../utils";
 
 export const post = {
   async createDraft(parent, { title, text }, ctx: IContext, info) {
-    const userId = getUserId(ctx)
+    const userId = getUserId(ctx);
     return ctx.db.mutation.createPost(
       {
         data: {
-          title,
-          text,
-          isPublished: false,
           author: {
             connect: { id: userId },
           },
+          isPublished: false,
+          text,
+          title,
         },
       },
-      info
-    )
+      info,
+    );
   },
 
   async publish(parent, { id }, ctx: IContext, info) {
-    const userId = getUserId(ctx)
+    const userId = getUserId(ctx);
     const postExists = await ctx.db.exists.Post({
-      id,
       author: { id: userId },
-    })
+      id,
+    });
     if (!postExists) {
-      throw new Error(`Post not found or you're not the author`)
+      throw new Error(`Post not found or you're not the author`);
     }
 
     return ctx.db.mutation.updatePost(
       {
-        where: { id },
         data: { isPublished: true },
+        where: { id },
       },
       info,
-    )
+    );
   },
 
   async deletePost(parent, { id }, ctx: IContext, info) {
-    const userId = getUserId(ctx)
+    const userId = getUserId(ctx);
     const postExists = await ctx.db.exists.Post({
-      id,
       author: { id: userId },
-    })
+      id,
+    });
     if (!postExists) {
-      throw new Error(`Post not found or you're not the author`)
+      throw new Error(`Post not found or you're not the author`);
     }
 
-    return ctx.db.mutation.deletePost({ where: { id } })
+    return ctx.db.mutation.deletePost({ where: { id } });
   },
-}
+};

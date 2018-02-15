@@ -23,9 +23,11 @@ export class IrasyncBackend {
         apiEndpoint,
         secret,
       });
+      // Connect the server to the new prisma instance
+      this.startServer();
       // Log the status message to the console
       this.logStatus({
-        apiEndpoint
+        apiEndpoint,
       });
     } catch (e) {
       throw new Error(e);
@@ -34,24 +36,28 @@ export class IrasyncBackend {
 
   private createServer({ apiEndpoint, secret }): void {
     this.server = new GraphQLServer({
-      typeDefs: "./src/schema.graphql",
-      resolvers,
       context: (req) => ({
         ...req,
         // Use the .env file to set secrets, endpoints etc.
         db: new Prisma({
+          debug: true,
           endpoint: apiEndpoint,
           secret,
-          debug: true,
         }),
       }),
+      resolvers,
+      typeDefs: "./src/schema.graphql",
     });
+  }
+
+  private startServer() {
+    this.server.start();
   }
 
   private logStatus({
     apiEndpoint,
   }): void {
-    catStartup.info(() => `Irasync API Server listening on port 4000.`);
+    catStartup.info(() => `Irasync API Server listening on port ${apiEndpoint}.`);
     catStartup.info(() => `GraphQL Endpoint: ${apiEndpoint}`);
     catStartup.info(() => `GraphiQL URL: http://localhost:3000/playground`);
   }
