@@ -1,12 +1,12 @@
 import * as jwt from "jsonwebtoken";
 import { Prisma } from "./generated/prisma";
 
-export interface Context {
+export interface IContext {
   db: Prisma;
   request: any;
 }
 
-export function getUserId(ctx: Context) {
+export function getUserId(ctx: IContext) {
   const Authorization = ctx.request.get("Authorization");
   if (Authorization) {
     const token = Authorization.replace("Bearer ", "");
