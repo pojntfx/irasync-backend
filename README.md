@@ -1,25 +1,83 @@
 # irasync-backend
 
-> An Irasync GraphQL API backend implemented using Apollo Server for Express and MongoDB.
+> An Irasync GraphQL API backend implemented using Apollo Server for Express and MySQL wrapped by Prisma.
 > Irasync is still evaluating and testing different stacks! Check out the different branches of this repo to try out the experiments.
+> Node >= 9, npm, yarn and docker should be installed using your OS's package manager before continuing.
+
+## Usage
+
+1. Install the dependencies noted above
+2. Start the Docker container **AND** API server using the commands below
+3. Start GraphiQl with ```yarn start:graphiql``` to open up a new browser window
+4. Signup with the following mutation:
+   ```js
+   mutation {
+     signup(name: "yourname", email: "test@example.com", password: "yourpassword") {
+       token
+     }
+   }
+   ```
+5. Login with following mutation:
+   ```js
+   mutation {
+     login(email: "test@example.com", password: "yourpassword") {
+       token
+     }
+   }
+   ```
+6. Authorize by adding the token from the mutation above to the HTTP Headers (on the bottom of GraphiQl):
+   ```js
+   {
+     "Authorization": "Bearer yourtokenfromthemutationabovehere"
+   }
+   ```
+7. Test if authorization works by querying your private drafts:
+   ```js
+   query {
+     drafts {
+       id
+     }
+   }
+   ```
+8. Commit other queries, mutations, subscriptions etc. in GraphiQl or startup your local instance of an [Irasync Frontend](https://github.com/irasync/irasync-frontend-web)!
+
+> If you want to use this in production, set the correct options (secrets etc.) in the .env file for security.
 
 ## Build Setup
 
-``` bash
-# install dependencies with npm:
-npm install
+```bash
+# install dependencies
+yarn install
 
-# serve the API server at localhost:8080 with hot reloading
-npm start
+# start your local development docker container (this can take some time)
+yarn start:db
 
-# serve the docs at localhost:8080
-npm run docs:serve
+# start the API server (remember to start the docker container first) and open up graphiql (this is what you'll use most of the time)
+yarn start:dev
 
-# update the docs
-npm run docs:update
+# start the API server
+yarn start:api
+
+# start GraphiQL for testing
+yarn start:graphiql
+
+# log information on the API server (endpoints etc.) to the console
+yarn about:status
 
 # lint the code (refer to the tslint docs if you want to use this in your IDE)
-npm run lint
+yarn lint
+
+# debug the code
+yarn debug
+
+# compile typescript
+yarn build
+
+# serve the docs at localhost:8080
+yarn docs:serve
+
+# update the docs after changes
+yarn docs:update
 ```
 
 ## License
