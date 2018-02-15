@@ -1,3 +1,10 @@
+# Compiled output
+dist
+
+# IDE Workspace Info
+.idea
+.vscode
+
 # Logs
 logs
 *.log
@@ -41,6 +48,7 @@ typings/
 
 # Optional npm cache directory
 .npm
+package-lock.json
 
 # Optional eslint cache
 .eslintcache
@@ -53,7 +61,3 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
-
-# dotenv environment variables file
-.env
-

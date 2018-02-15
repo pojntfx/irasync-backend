@@ -1,22 +1,12 @@
-import { graphiqlExpress, graphqlExpress } from "apollo-server-express";
-import * as bodyParser from "body-parser";
-import * as express from "express";
-import { makeExecutableSchema } from "graphql-tools";
-import { catStartup } from "./logging";
+import { GraphQLServer } from "graphql-yoga";
+import { Prisma } from "./generated/prisma";
+import resolvers from "./resolvers";
 
-import Database from "./models";
-
-import { fileLoader, mergeResolvers, mergeTypes } from "merge-graphql-schemas";
-import * as path from "path";
+import { catStartup } from "./utils/logging";
 
 export interface IStartParams {
   apiEndpoint: string;
-  apiPort: number;
-  graphiqlEnabled: boolean;
-  graphiqlEndpoint?: string;
-  dbName: string;
-  dbUserName: string;
-  dbPassword: string;
+  secret: string;
 }
 
 /**
@@ -24,110 +14,52 @@ export interface IStartParams {
  */
 export class IrasyncBackend {
 
-  private server: express.Application;
-  private database: any;
+  private server;
 
-  constructor({
-    apiEndpoint,
-    dbName,
-    dbUserName,
-    dbPassword,
-    apiPort,
-    graphiqlEnabled,
-    graphiqlEndpoint,
-  }: IStartParams) {
+  constructor({ apiEndpoint, secret }: IStartParams) {
     try {
-      // Create new express instance
-      this.server = express();
-      // Enable graphql middleware
-      this.connectGraphQl({
+      // Create a new prisma instance
+      this.createServer({
         apiEndpoint,
-        schema: this.makeSchemaExecutable(),
+        secret,
       });
-      // Enable graphiql middleware if needed
-      if (graphiqlEnabled) {
-        this.connectGraphiQl({
-          apiEndpoint,
-          graphiqlEndpoint,
-        });
-      }
-      // Connect to database, then tell express to listen
-      this.startServers({
-        apiPort,
-        dbName,
-        dbPassword,
-        dbUserName,
+      // Connect the server to the new prisma instance
+      this.startServer();
+      // Log the status message to the console
+      this.logStatus({
+        apiEndpoint,
       });
-      // Log status message
-      this.logStatus({ apiPort, apiEndpoint, graphiqlEndpoint, graphiqlEnabled });
     } catch (e) {
       throw new Error(e);
     }
   }
 
-  private connectGraphQl({ apiEndpoint, schema }) {
-    this.server.use(apiEndpoint, bodyParser.json(), graphqlExpress({
-      schema,
-    }));
-  }
-
-  private mergeResolvers() {
-    return mergeResolvers(fileLoader(path.join(__dirname, "./resolvers")));
-  }
-
-  private mergeSchemas() {
-    return mergeTypes(fileLoader(path.join(__dirname, "./schemas")));
-  }
-
-  private makeSchemaExecutable() {
-    return makeExecutableSchema({
-      // Load and merge the resolvers
-      resolvers: this.mergeResolvers(),
-      // Load and merge the schema modules
-      typeDefs: this.mergeSchemas(),
+  private createServer({ apiEndpoint, secret }): void {
+    this.server = new GraphQLServer({
+      context: (req) => ({
+        ...req,
+        // Use the .env file to set secrets, endpoints etc.
+        db: new Prisma({
+          debug: true,
+          endpoint: apiEndpoint,
+          secret,
+        }),
+      }),
+      resolvers,
+      typeDefs: "./src/schema.graphql",
     });
   }
 
-  private connectGraphiQl({ graphiqlEndpoint, apiEndpoint }) {
-    this.server.get(graphiqlEndpoint, graphiqlExpress({ endpointURL: apiEndpoint }));
-  }
-
-  private startServers({
-    apiPort,
-    dbName,
-    dbPassword,
-    dbUserName,
-  }) {
-    // Create new database instance
-    this.database = new Database({
-      dbName,
-      dbPassword,
-      dbUserName,
-    });
-    // Sync with the database, then start the express server
-    // Use "{ force: true }" if you want to delete all existing db tables at compiletime
-    this.database.sequelize.sync({ force: true }).then(() => {
-      // Listen on port apiPort
-      this.startExpress({
-        apiPort,
-      });
-    });
-  }
-
-  private startExpress({ apiPort }) {
-    this.server.listen(apiPort);
+  private startServer() {
+    this.server.start();
   }
 
   private logStatus({
-    apiPort,
     apiEndpoint,
-    graphiqlEnabled,
-    graphiqlEndpoint,
-  }) {
-    catStartup.info(() => `Irasync API Server listening on port ${apiPort}.`);
+  }): void {
+    catStartup.info(() => `Irasync API Server listening on port ${apiEndpoint}.`);
     catStartup.info(() => `GraphQL Endpoint: ${apiEndpoint}`);
-    if (graphiqlEnabled) {
-      catStartup.info(() => `GraphiQL Endpoint: ${graphiqlEndpoint}`);
-    }
+    catStartup.info(() => `GraphiQL URL: http://localhost:3000/playground`);
   }
+
 }

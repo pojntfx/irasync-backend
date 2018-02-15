@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IStartParams | Irasync Backend</title>
+	<title>PageInfo | Irasync Backend</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_start_.html">&quot;start&quot;</a>
+					<a href="../modules/_generated_prisma_.html">&quot;generated/prisma&quot;</a>
 				</li>
 				<li>
-					<a href="_start_.istartparams.html">IStartParams</a>
+					<a href="_generated_prisma_.pageinfo.html">PageInfo</a>
 				</li>
 			</ul>
-			<h1>Interface IStartParams</h1>
+			<h1>Interface PageInfo</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IStartParams</span>
+						<span class="target">PageInfo</span>
 					</li>
 				</ul>
 			</section>
@@ -84,8 +84,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_start_.istartparams.html#apiendpoint" class="tsd-kind-icon">api<wbr>Endpoint</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_start_.istartparams.html#secret" class="tsd-kind-icon">secret</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_generated_prisma_.pageinfo.html#endcursor" class="tsd-kind-icon">end<wbr>Cursor</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_generated_prisma_.pageinfo.html#hasnextpage" class="tsd-kind-icon">has<wbr>Next<wbr>Page</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_generated_prisma_.pageinfo.html#haspreviouspage" class="tsd-kind-icon">has<wbr>Previous<wbr>Page</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_generated_prisma_.pageinfo.html#startcursor" class="tsd-kind-icon">start<wbr>Cursor</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,22 +96,42 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="apiendpoint" class="tsd-anchor"></a>
-					<h3>api<wbr>Endpoint</h3>
-					<div class="tsd-signature tsd-kind-icon">api<wbr>Endpoint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="endcursor" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> end<wbr>Cursor</h3>
+					<div class="tsd-signature tsd-kind-icon">end<wbr>Cursor<span class="tsd-signature-symbol">:</span> <a href="../modules/_generated_prisma_.html#string" class="tsd-signature-type">String</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/7b07442/src/start.ts#L8">start.ts:8</a></li>
+							<li>Defined in generated/prisma.ts:767</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="secret" class="tsd-anchor"></a>
-					<h3>secret</h3>
-					<div class="tsd-signature tsd-kind-icon">secret<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="hasnextpage" class="tsd-anchor"></a>
+					<h3>has<wbr>Next<wbr>Page</h3>
+					<div class="tsd-signature tsd-kind-icon">has<wbr>Next<wbr>Page<span class="tsd-signature-symbol">:</span> <a href="../modules/_generated_prisma_.html#boolean" class="tsd-signature-type">Boolean</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/irasync/irasync-backend/blob/7b07442/src/start.ts#L9">start.ts:9</a></li>
+							<li>Defined in generated/prisma.ts:764</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="haspreviouspage" class="tsd-anchor"></a>
+					<h3>has<wbr>Previous<wbr>Page</h3>
+					<div class="tsd-signature tsd-kind-icon">has<wbr>Previous<wbr>Page<span class="tsd-signature-symbol">:</span> <a href="../modules/_generated_prisma_.html#boolean" class="tsd-signature-type">Boolean</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in generated/prisma.ts:765</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="startcursor" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> start<wbr>Cursor</h3>
+					<div class="tsd-signature tsd-kind-icon">start<wbr>Cursor<span class="tsd-signature-symbol">:</span> <a href="../modules/_generated_prisma_.html#string" class="tsd-signature-type">String</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in generated/prisma.ts:766</li>
 						</ul>
 					</aside>
 				</section>
@@ -121,7 +143,7 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_generated_prisma_.html">"generated/prisma"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -142,7 +164,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_resolvers_index_.html">"resolvers/index"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_start_.html">"start"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -155,19 +177,22 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_start_.irasyncbackend.html" class="tsd-kind-icon">Irasync<wbr>Backend</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_start_.istartparams.html" class="tsd-kind-icon">IStart<wbr>Params</a>
+						<a href="_generated_prisma_.pageinfo.html" class="tsd-kind-icon">Page<wbr>Info</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_start_.istartparams.html#apiendpoint" class="tsd-kind-icon">api<wbr>Endpoint</a>
+								<a href="_generated_prisma_.pageinfo.html#endcursor" class="tsd-kind-icon">end<wbr>Cursor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_start_.istartparams.html#secret" class="tsd-kind-icon">secret</a>
+								<a href="_generated_prisma_.pageinfo.html#hasnextpage" class="tsd-kind-icon">has<wbr>Next<wbr>Page</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_generated_prisma_.pageinfo.html#haspreviouspage" class="tsd-kind-icon">has<wbr>Previous<wbr>Page</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_generated_prisma_.pageinfo.html#startcursor" class="tsd-kind-icon">start<wbr>Cursor</a>
 							</li>
 						</ul>
 					</li>
