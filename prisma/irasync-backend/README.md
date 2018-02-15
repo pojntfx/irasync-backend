@@ -12,13 +12,35 @@
 
 4. Signup with the following mutation:
    ```js
-   // Mutation will go here at some point
+   mutation {
+     signup(name: "yourname", email: "test@example.com", password: "yourpassword") {
+       token
+     }
+   }
    ```
 5. Login with following mutation:
    ```js
-   // Mutation will go here at some point
+   mutation {
+     login(email: "test@example.com", password: "yourpassword") {
+       token
+     }
+   }
    ```
-6. Commit queries, mutations, subscriptions etc. in GraphiQl or startup your local instance of an [Irasync Frontend](https://github.com/irasync/irasync-frontend-web)!
+6. Authorize by adding the token to the HTTP Header (On the bottom of GraphiQl)
+   ```js
+   {
+     "Authorization": "Bearer yourtokenfromthemutationabovehere"
+   }
+   ```
+7. Test if authorization worked by querying your drafts
+   ```js
+   query {
+     drafts {
+       id
+     }
+   }
+   ```
+8. Commit other queries, mutations, subscriptions etc. in GraphiQl or startup your local instance of an [Irasync Frontend](https://github.com/irasync/irasync-frontend-web)!
 
 > If you want to use this in production, set the correct options (secrets etc.) in the .env file for security.
 
