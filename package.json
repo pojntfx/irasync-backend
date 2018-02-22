@@ -8,7 +8,7 @@
     "start:db": "prisma local start",
     "start:api": "dotenv -- nodemon",
     "start:graphiql": "graphql playground",
-    "start:dev": "npm-run-all --parallel start deploy start:graphiql",
+    "start:dev": "npm-run-all --parallel start deploy:db start:graphiql",
     "deploy:db": "prisma deploy",
     "about:status": "prisma info",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
