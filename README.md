@@ -7,8 +7,8 @@
 ## Usage
 
 1. Install the dependencies noted above
-2. Start the Docker container **AND** API server using the commands below
-3. Start GraphiQl with ```yarn start:graphiql``` to open up a new browser window
+2. Start the Docker container with ```yarn start:db``` (run as root) **AND** API server with ```yarn start:api``` **AND** deploy the DB migrations using ```yarn deploy:db```
+3. Start GraphiQl with ```yarn start:graphiql``` to open up a new browser window (To skip the two steps above, you may also use the shorthand ```yarn start:dev```)
 4. Signup with the following mutation:
    ```js
    mutation {
@@ -31,7 +31,7 @@
      "Authorization": "Bearer yourtokenfromthemutationabovehere"
    }
    ```
-7. Test if authorization works by querying your private drafts:
+7. Test if authorization works by querying your private drafts (should return an empty array by default):
    ```js
    query {
      drafts {
@@ -49,10 +49,13 @@
 # install dependencies
 yarn install
 
-# start your local development docker container (this can take some time)
+# start your local development docker container (this can take some time) (run as root)
 yarn start:db
 
-# start the API server (remember to start the docker container first) and open up graphiql (this is what you'll use most of the time)
+# apply migrations to the db (this has to be run at least once after installation)
+yarn deploy:db
+
+# (this is what you'll use most of the time) (remember to start the docker container first) start the API server, deploy the migrations and open up graphiql
 yarn start:dev
 
 # start the API server
@@ -60,6 +63,9 @@ yarn start:api
 
 # start GraphiQL for testing
 yarn start:graphiql
+
+# start the API server
+yarn start:api
 
 # log information on the API server (endpoints etc.) to the console
 yarn about:status
