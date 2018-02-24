@@ -5,5 +5,6 @@ import { IrasyncBackend, IStartParams } from "./start";
  */
 const irasyncBackend = new IrasyncBackend({
   apiEndpoint: process.env.PRISMA_ENDPOINT,
+  frontendEndpoint: process.env.FRONTEND_ENDPOINT,
   secret: process.env.PRISMA_SECRET,
 });

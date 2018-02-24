@@ -10,16 +10,17 @@ import { catStartup } from "./utils/logging";
 export interface IStartParams {
   apiEndpoint: string;
   secret: string;
+  frontendEndpoint: string;
 }
 
 /**
  * Startup an Irasync backend server
  */
 export class IrasyncBackend {
-  // Holds the Prisma serve
+  // Holds the Prisma server
   private server;
 
-  constructor({ apiEndpoint, secret }: IStartParams) {
+  constructor({ apiEndpoint, secret, frontendEndpoint }: IStartParams) {
     try {
       // Create a new prisma instance
       this.createServer({
@@ -27,10 +28,11 @@ export class IrasyncBackend {
         secret,
       });
       // Connect the server to the new prisma instance
-      this.startServer();
+      this.startServer({ frontendEndpoint });
       // Log the status message to the console
       this.logStatus({
         apiEndpoint,
+        frontendEndpoint,
       });
     } catch (e) {
       throw new Error(e);
@@ -61,11 +63,11 @@ export class IrasyncBackend {
   /**
    * Connect to the Prisma server
    */
-  private startServer() {
+  private startServer({ frontendEndpoint }) {
 
     // Use credentials from cross-origin
     const options = {
-      cors: { credentials: true },
+      cors: { credentials: true, origin: frontendEndpoint },
     };
 
     this.server.start(options);
@@ -77,10 +79,12 @@ export class IrasyncBackend {
    */
   private logStatus({
     apiEndpoint,
+    frontendEndpoint,
   }): void {
-    catStartup.info(() => `Irasync API Server listening on port ${apiEndpoint}.`);
-    catStartup.info(() => `GraphQL Endpoint: ${apiEndpoint}`);
-    catStartup.info(() => `GraphiQL URL: http://localhost:3000/playground`);
+    catStartup.info(() => `Irasync Backend Server is listening!`);
+    catStartup.info(() => `API Endpoint: ${apiEndpoint}`);
+    catStartup.info(() => `Frontend Endpoint: ${frontendEndpoint}`);
+    catStartup.info(() => `GraphiQL Endpoint: http://localhost:3000/playground`);
   }
 
 }
