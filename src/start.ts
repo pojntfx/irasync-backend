@@ -62,7 +62,13 @@ export class IrasyncBackend {
    * Connect to the Prisma server
    */
   private startServer() {
-    this.server.start();
+
+    // Use credentials from cross-origin
+    const options = {
+      cors: { credentials: true },
+    };
+
+    this.server.start(options);
   }
 
   /**
