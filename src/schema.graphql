@@ -2,7 +2,7 @@
 
 type Query {
   feed: [Post!]!
-  drafts: [Post!]!
+  drafts(arePublished: Boolean): [Post!]!
   post(id: ID!): Post!
   me: User
 }

@@ -38,15 +38,16 @@
     "@types/bcryptjs": "2.4.1",
     "dotenv-cli": "1.4.0",
     "graphql-cli": "2.14.1",
+    "live-server": "^1.2.0",
     "nodemon": "1.14.12",
     "npm-run-all": "4.1.2",
     "prisma": "1.2.3",
     "rimraf": "2.6.2",
     "ts-node": "4.1.0",
-    "typescript": "2.7.1",
-    "live-server": "^1.2.0",
     "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.9.0",
     "typedoc": "^0.10.0",
+    "typescript": "2.7.1",
     "typescript-logging": "^0.5.0"
   }
 }
