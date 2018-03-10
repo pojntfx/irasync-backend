@@ -39,7 +39,7 @@
      }
    }
    ```
-8. Commit other queries, mutations, subscriptions etc. in GraphiQl or startup your local instance of an [Irasync Frontend](https://github.com/irasync/irasync-frontend-web)! The default frontend endpoint is ```http://localhost:4200``` as specified in the ```.env``` file.
+8. Commit other queries, mutations, subscriptions etc. in GraphiQl or startup your local instance of an [Irasync Frontend](https://github.com/irasync/irasync-frontend-web)! The default frontend endpoint is ```http://localhost:3000``` as specified in the ```.env``` file.
 
 > If you want to use this in production, set the correct options (secrets etc.) in the .env file for security.
 
