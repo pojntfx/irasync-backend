@@ -7,14 +7,14 @@ export const post = {
       {
         data: {
           author: {
-            connect: { id: userId },
+            connect: { id: userId }
           },
           isPublished: false,
           text,
-          title,
-        },
+          title
+        }
       },
-      info,
+      info
     );
   },
 
@@ -22,7 +22,7 @@ export const post = {
     const userId = getUserId(ctx);
     const postExists = await ctx.db.exists.Post({
       author: { id: userId },
-      id,
+      id
     });
     if (!postExists) {
       throw new Error(`Post not found or you're not the author`);
@@ -31,9 +31,9 @@ export const post = {
     return ctx.db.mutation.updatePost(
       {
         data: { isPublished: true },
-        where: { id },
+        where: { id }
       },
-      info,
+      info
     );
   },
 
@@ -41,7 +41,7 @@ export const post = {
     const userId = getUserId(ctx);
     const postExists = await ctx.db.exists.Post({
       author: { id: userId },
-      id,
+      id
     });
     if (!postExists) {
       throw new Error(`Post not found or you're not the author`);
@@ -49,4 +49,28 @@ export const post = {
 
     return ctx.db.mutation.deletePost({ where: { id } });
   },
+
+  async updatePost(parent, { id, title, text }, ctx: IContext, info) {
+    const userId = getUserId(ctx);
+    const postExists = await ctx.db.exists.Post({
+      author: { id: userId },
+      id
+    });
+    if (!postExists) {
+      throw new Error(`Post not found or you're not the author`);
+    }
+
+    return ctx.db.mutation.updatePost(
+      {
+        data: {
+          text,
+          title
+        },
+        where: {
+          id
+        }
+      },
+      info
+    );
+  }
 };
