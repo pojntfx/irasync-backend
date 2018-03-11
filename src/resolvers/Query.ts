@@ -11,14 +11,15 @@ export const Query = {
     const where = {
       author: {
         id
-      }
+      },
+      isPublished: false
     };
 
     // If the published arg has been provided, check whether only published
     // or non-published posts should be returned
     args.arePublished
-      ? (where["isPublished"] = true)
-      : (where["isPublished"] = false);
+      ? (where.isPublished = true)
+      : (where.isPublished = false);
 
     return ctx.db.query.posts({ where }, info);
   },
