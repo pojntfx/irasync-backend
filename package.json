@@ -23,7 +23,7 @@
     "url": "git+https://github.com/irasync/irasync-backend.git"
   },
   "author": "Felix Pojtinger",
-  "license": "GPL-3.0",
+  "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/irasync/irasync-backend/issues"
   },
